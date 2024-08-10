@@ -15,9 +15,9 @@ function fetchMessages(userId) {
 
 function displayMessages(messages) {
     const messagesDiv = document.getElementById('messages');
-    messagesDiv.innerHTML = ''; // Clear previous messages
+    messagesDiv.innerHTML = '';
     messages.forEach(message => {
-        addMessageToUI(message); // Add each message to the UI
+        addMessageToUI(message);
     });
 }
 
@@ -28,12 +28,12 @@ function subscribeToChannel(receiverId) {
     currentChannel = window.Echo.private('chat.' + receiverId)
         .listen('.message.sent', (e) => {
             const message = e.message;
-            addMessageToUI(message); // Add new message to the UI
+            addMessageToUI(message);
         });
 }
 
 window.onUserClick = function (userId) {
-    fetchMessages(userId); // Fetch and display messages when a user is clicked
+    fetchMessages(userId);
 }
 
 window.sendMessage = function () {
